@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="15dp"
-        android:layout_marginLeft="55dp"
-        android:layout_marginRight="55dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
         android:layout_marginTop="15dp"
         android:scaleType="fitXY" />
 </LinearLayout>
