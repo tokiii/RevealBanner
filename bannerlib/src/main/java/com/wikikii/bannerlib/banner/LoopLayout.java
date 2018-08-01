@@ -302,12 +302,12 @@ public class LoopLayout extends RelativeLayout {
         handler.removeCallbacksAndMessages(MESSAGE_LOOP);
         handler.sendEmptyMessageDelayed(MESSAGE_LOOP, getLoop_ms());
         L.e("LoopViewPager ---> startLoop");
-        if (loopAdapterWrapper.getPrimaryItem(loopViewPager.getCurrentItem()) != null && isScaleAnimation) {
-            ImageView imageView = loopAdapterWrapper.getPrimaryItem(loopViewPager.getCurrentItem()).findViewById(R.id.iv_loop_banner);
-            if (imageView != null) {
-                narrowView(imageView, loop_ms - 200);
-            }
-        }
+//        if (loopAdapterWrapper.getPrimaryItem(loopViewPager.getCurrentItem()) != null && isScaleAnimation) {
+//            ImageView imageView = loopAdapterWrapper.getPrimaryItem(loopViewPager.getCurrentItem()).findViewById(R.id.iv_loop_banner);
+//            if (imageView != null) {
+//                narrowView(imageView, loop_ms - 200);
+//            }
+//        }
 
     }
 
@@ -329,12 +329,12 @@ public class LoopLayout extends RelativeLayout {
     public void stopLoop() {
         handler.removeMessages(MESSAGE_LOOP);
         L.e("LoopViewPager ---> stopLoop");
-        if (loopAdapterWrapper.getPrimaryItem(loopViewPager.getCurrentItem()) != null && isScaleAnimation) {
-            ImageView imageView = loopAdapterWrapper.getPrimaryItem(loopViewPager.getCurrentItem()).findViewById(R.id.iv_loop_banner);
-            if (imageView != null) {
-                enLargeView(imageView);
-            }
-        }
+//        if (loopAdapterWrapper.getPrimaryItem(loopViewPager.getCurrentItem()) != null && isScaleAnimation) {
+//            ImageView imageView = loopAdapterWrapper.getPrimaryItem(loopViewPager.getCurrentItem()).findViewById(R.id.iv_loop_banner);
+//            if (imageView != null) {
+//                enLargeView(imageView);
+//            }
+//        }
     }
 
     /**
@@ -392,7 +392,6 @@ public class LoopLayout extends RelativeLayout {
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             if (loopAdapterWrapper.getCount() > 0) {
                 float length = ((position % bannerInfos.size()) + positionOffset) / (bannerInfos.size() - 1);
-                // 为了防止最后一小红点滑出去
                 if (length >= 1) {
                 } else {
                     float path = length * totalDistance;
@@ -544,7 +543,6 @@ public class LoopLayout extends RelativeLayout {
                 public void onAnimationStart(Animator animation) {
 
                 }
-
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     view.clearAnimation();
