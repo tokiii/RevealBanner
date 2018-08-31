@@ -382,6 +382,7 @@ public class LoopLayout extends RelativeLayout {
 
     float reduceValue = 0.2f;
     float upValue = 2.5f;
+    boolean isMovingDone = false;
 
     /**
      * OnPageChangeListener
@@ -400,6 +401,7 @@ public class LoopLayout extends RelativeLayout {
                 if (isScaleAnimation) {
                     ImageView imageView;
                     if (positionOffset == 0f) {
+                        isMovingDone = true;
                         if (loopAdapterWrapper.getPrimaryItem(loopViewPager.getCurrentItem()) != null) {
                             imageView = loopAdapterWrapper.getPrimaryItem(loopViewPager.getCurrentItem()).findViewById(R.id.iv_loop_banner);
                             if (imageView != null) {
@@ -408,6 +410,7 @@ public class LoopLayout extends RelativeLayout {
                             }
                         }
                     } else {
+                        isMovingDone = false;
                         if (bigIndex != -1) {
                             if (loopAdapterWrapper.getPrimaryItem(bigIndex) != null) {
                                 imageView = loopAdapterWrapper.getPrimaryItem(bigIndex).findViewById(R.id.iv_loop_banner);
@@ -461,7 +464,7 @@ public class LoopLayout extends RelativeLayout {
         @Override
         public void onPageScrollStateChanged(int state) {
             if (state == 1) {
-                if (loopViewPager != null) {
+                if (loopViewPager != null && isMovingDone) {
                     mViewPagerIndex = loopViewPager.getCurrentItem();
                 }
             }
