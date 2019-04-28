@@ -1,4 +1,16 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = 'tokiii'
+    repoName = 'myLib'
+    groupId = 'com.tokiii'
+    artifactId = 'reveal-banner'
+    publishVersion = '1.0.0'
+    desc = 'reveal-banner-lib'
+    website = 'https://github.com/tokiii'
+}
+
 
 android {
     compileSdkVersion 27
