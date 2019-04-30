@@ -5,7 +5,37 @@
 
 # 示例代码
 
-```aidl
+- 在 app的build.gradle 里面引用
+
+```
+implementation 'com.tokiii:reveal-banner:1.0.0'
+```
+
+- 布局文件
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="240dp">
+
+    <com.wikikii.bannerlib.banner.view.BannerBgContainer
+        android:id="@+id/banner_bg_container"
+        android:layout_width="match_parent"
+        android:layout_height="240dp" />
+
+
+    <com.wikikii.bannerlib.banner.LoopLayout
+        android:id="@+id/loop_layout"
+        android:layout_width="match_parent"
+        android:layout_height="168dp"
+        android:layout_gravity="bottom" />
+</FrameLayout>
+```
+
+- 代码设置属性
+
+```
         // 设置轮播图属性
         loopLayout.setLoop_ms(3000);//轮播的速度(毫秒)
         loopLayout.setLoop_duration(400);//滑动的速率(毫秒)
