@@ -1,7 +1,7 @@
 # RevealBanner
 仿转转Banner  如有帮助，给个Star
 
-<img src="https://github.com/tokiii/RevealBanner/blob/master/art/banner_g.gif?raw=true" width="50%" height="50%"/>
+![banner_g--.gif](https://upload-images.jianshu.io/upload_images/2119978-c95cfa61b70be78a.gif?imageMogr2/auto-orient/strip)
 
 # 示例代码
 
