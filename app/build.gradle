@@ -23,6 +23,6 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 //    implementation project(':reveal-banner')
-    implementation 'com.tokiii:reveal-banner:1.0.0'
+    implementation 'com.tokiii:reveal-banner:1.0.1'
 
 }
