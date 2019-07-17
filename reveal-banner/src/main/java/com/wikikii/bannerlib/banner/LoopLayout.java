@@ -426,7 +426,7 @@ public class LoopLayout extends RelativeLayout {
                 }
             }
 
-            if (bannerBgContainer == null) {
+            if (bannerBgContainer == null || bannerBgContainer.getBannerBgViews().size() == 1 || bannerInfos.size() == 1) {// 判断如果是一张背景图片的话不动
                 return;
             }
             if (mViewPagerIndex == position) {
