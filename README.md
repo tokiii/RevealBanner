@@ -8,7 +8,7 @@
 - 在 app的build.gradle 里面引用
 
 ```
-implementation 'com.tokiii:reveal-banner:1.0.0'
+implementation 'com.tokiii:reveal-banner:1.0.1'
 ```
 
 - 布局文件
