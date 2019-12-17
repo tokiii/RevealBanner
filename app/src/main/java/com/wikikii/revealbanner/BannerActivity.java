@@ -1,5 +1,6 @@
 package com.wikikii.revealbanner;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -29,6 +31,7 @@ public class BannerActivity extends AppCompatActivity implements OnBannerItemCli
 
     BannerBgContainer bannerBgContainer;
     LoopLayout loopLayout;
+    Button btnList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +40,14 @@ public class BannerActivity extends AppCompatActivity implements OnBannerItemCli
         setFullScreen();
         loopLayout = findViewById(R.id.loop_layout);
         bannerBgContainer = findViewById(R.id.banner_bg_container);
+
+        btnList = findViewById(R.id.btn_list);
+        btnList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BannerActivity.this, RecyclerViewActivity.class));
+            }
+        });
         loopLayout.setLoop_ms(3000);//轮播的速度(毫秒)
         loopLayout.setLoop_duration(400);//滑动的速率(毫秒)
         loopLayout.setScaleAnimation(true);// 设置是否需要动画
@@ -94,5 +105,11 @@ public class BannerActivity extends AppCompatActivity implements OnBannerItemCli
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        loopLayout.stopLoop();// 页面销毁时需要停止
     }
 }
