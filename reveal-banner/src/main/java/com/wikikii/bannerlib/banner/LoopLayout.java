@@ -73,6 +73,9 @@ public class LoopLayout extends RelativeLayout {
 
     boolean isScaleAnimation;
 
+    ImageView enlargeView;// 放大的view
+    ImageView narrowView;// 缩小的view
+
     public void setScaleAnimation(boolean scaleAnimation) {
         isScaleAnimation = scaleAnimation;
     }
@@ -406,7 +409,8 @@ public class LoopLayout extends RelativeLayout {
                             imageView = loopAdapterWrapper.getPrimaryItem(loopViewPager.getCurrentItem()).findViewById(R.id.iv_loop_banner);
                             if (imageView != null) {
                                 bigIndex = loopViewPager.getCurrentItem();
-                                enLargeView(imageView);
+                                enlargeView = imageView;
+                                enLargeView();
                             }
                         }
                     } else {
@@ -418,7 +422,8 @@ public class LoopLayout extends RelativeLayout {
                                     delayAnimationSet.cancel();
                                     imageView.clearAnimation();
                                 }
-                                narrowView(imageView);
+                                narrowView = imageView;
+                                narrowView();
                             }
 
                         }
@@ -491,79 +496,90 @@ public class LoopLayout extends RelativeLayout {
 
     /**
      * 放大View
-     *
-     * @param view
-     */
-    public void enLargeView(final View view) {
-        if (view.getScaleX() == smallScaleValue) {
-            scaleX = ObjectAnimator.ofFloat(view, "scaleX", smallScaleValue, bigScaleValue);
-            scaleY = ObjectAnimator.ofFloat(view, "scaleY", smallScaleValue, bigScaleValue);
+     **/
+    public void enLargeView() {
+        if (enlargeView.getScaleX() == smallScaleValue) {
+            scaleX = ObjectAnimator.ofFloat(enlargeView, "scaleX", smallScaleValue, bigScaleValue);
+            scaleY = ObjectAnimator.ofFloat(enlargeView, "scaleY", smallScaleValue, bigScaleValue);
             animatorSetsuofang.setDuration(200);
             animatorSetsuofang.setInterpolator(linearInterpolator);
             animatorSetsuofang.play(scaleX).with(scaleY);//两个动画同时开始
             animatorSetsuofang.start();
-            animatorSetsuofang.addListener(new Animator.AnimatorListener() {
-                @Override
-                public void onAnimationStart(Animator animation) {
-
-                }
-
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    view.clearAnimation();
-                    animatorSetsuofang.removeAllListeners();
-                }
-
-                @Override
-                public void onAnimationCancel(Animator animation) {
-
-                }
-
-                @Override
-                public void onAnimationRepeat(Animator animation) {
-
-                }
-            });
+            animatorSetsuofang.addListener(enlargeAnimatorListener);
         }
     }
 
+
+    Animator.AnimatorListener enlargeAnimatorListener = new Animator.AnimatorListener() {
+        @Override
+        public void onAnimationStart(Animator animation) {
+
+        }
+
+        @Override
+        public void onAnimationEnd(Animator animation) {
+            enlargeView.clearAnimation();
+            animatorSetsuofang.removeListener(enlargeAnimatorListener);
+            scaleX = null;
+            scaleY = null;
+            enlargeView = null;
+            System.gc();
+        }
+
+        @Override
+        public void onAnimationCancel(Animator animation) {
+
+        }
+
+        @Override
+        public void onAnimationRepeat(Animator animation) {
+
+        }
+    };
+
     /**
      * 缩小View
-     *
-     * @param view
-     */
-    public void narrowView(final View view) {
-        if (view != null && view.getScaleX() == bigScaleValue) {
-            smallScaleX = ObjectAnimator.ofFloat(view, "scaleX", bigScaleValue, smallScaleValue);
-            smallScaleY = ObjectAnimator.ofFloat(view, "scaleY", bigScaleValue, smallScaleValue);
+     **/
+    public void narrowView() {
+        if (narrowView != null && narrowView.getScaleX() == bigScaleValue) {
+            smallScaleX = ObjectAnimator.ofFloat(narrowView, "scaleX", bigScaleValue, smallScaleValue);
+            smallScaleY = ObjectAnimator.ofFloat(narrowView, "scaleY", bigScaleValue, smallScaleValue);
             animatorSmall.setDuration(100);
             animatorSmall.setInterpolator(linearInterpolator);
             animatorSmall.play(smallScaleX).with(smallScaleY);//两个动画同时开始
             animatorSmall.start();
             bigIndex = -1;
-            animatorSmall.addListener(new Animator.AnimatorListener() {
-                @Override
-                public void onAnimationStart(Animator animation) {
-
-                }
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    view.clearAnimation();
-                    animatorSmall.removeAllListeners();
-                }
-
-                @Override
-                public void onAnimationCancel(Animator animation) {
-
-                }
-
-                @Override
-                public void onAnimationRepeat(Animator animation) {
-
-                }
-            });
+            animatorSmall.addListener(narrowAnimatorListener);
         }
     }
+
+
+    Animator.AnimatorListener narrowAnimatorListener = new Animator.AnimatorListener() {
+        @Override
+        public void onAnimationStart(Animator animation) {
+
+        }
+
+        @Override
+        public void onAnimationEnd(Animator animation) {
+            narrowView.clearAnimation();
+            animatorSmall.removeAllListeners();
+            smallScaleX = null;
+            smallScaleY = null;
+            narrowView = null;
+            System.gc();
+        }
+
+        @Override
+        public void onAnimationCancel(Animator animation) {
+
+        }
+
+        @Override
+        public void onAnimationRepeat(Animator animation) {
+
+        }
+    };
 
 
     /**
