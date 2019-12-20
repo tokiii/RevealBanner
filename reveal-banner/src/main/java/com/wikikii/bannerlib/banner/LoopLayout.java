@@ -477,11 +477,10 @@ public class LoopLayout extends RelativeLayout {
     }
 
 
-    AnimatorSet animatorSetsuofang = new AnimatorSet();
     ObjectAnimator scaleX;
     ObjectAnimator scaleY;
 
-    AnimatorSet animatorSmall = new AnimatorSet();
+
     ObjectAnimator smallScaleX;
     ObjectAnimator smallScaleY;
 
@@ -494,10 +493,14 @@ public class LoopLayout extends RelativeLayout {
     float smallScaleValue = 1.0f;
     float bigScaleValue = 1.2f;
 
+    AnimatorSet animatorSmall;
+    AnimatorSet animatorSetsuofang;
+
     /**
      * 放大View
      **/
     public void enLargeView() {
+        animatorSetsuofang = new AnimatorSet();
         if (enlargeView.getScaleX() == smallScaleValue) {
             scaleX = ObjectAnimator.ofFloat(enlargeView, "scaleX", smallScaleValue, bigScaleValue);
             scaleY = ObjectAnimator.ofFloat(enlargeView, "scaleY", smallScaleValue, bigScaleValue);
@@ -505,7 +508,8 @@ public class LoopLayout extends RelativeLayout {
             animatorSetsuofang.setInterpolator(linearInterpolator);
             animatorSetsuofang.play(scaleX).with(scaleY);//两个动画同时开始
             animatorSetsuofang.start();
-            animatorSetsuofang.addListener(enlargeAnimatorListener);
+            if (animatorSetsuofang.getListeners() != null && animatorSetsuofang.getListeners().size() == 0)
+                animatorSetsuofang.addListener(enlargeAnimatorListener);
         }
     }
 
@@ -519,11 +523,10 @@ public class LoopLayout extends RelativeLayout {
         @Override
         public void onAnimationEnd(Animator animation) {
             enlargeView.clearAnimation();
-            animatorSetsuofang.removeListener(enlargeAnimatorListener);
             scaleX = null;
             scaleY = null;
             enlargeView = null;
-            System.gc();
+            animatorSetsuofang.cancel();
         }
 
         @Override
@@ -541,6 +544,7 @@ public class LoopLayout extends RelativeLayout {
      * 缩小View
      **/
     public void narrowView() {
+        animatorSmall = new AnimatorSet();
         if (narrowView != null && narrowView.getScaleX() == bigScaleValue) {
             smallScaleX = ObjectAnimator.ofFloat(narrowView, "scaleX", bigScaleValue, smallScaleValue);
             smallScaleY = ObjectAnimator.ofFloat(narrowView, "scaleY", bigScaleValue, smallScaleValue);
@@ -562,12 +566,9 @@ public class LoopLayout extends RelativeLayout {
 
         @Override
         public void onAnimationEnd(Animator animation) {
-            narrowView.clearAnimation();
-            animatorSmall.removeAllListeners();
-            smallScaleX = null;
-            smallScaleY = null;
-            narrowView = null;
-            System.gc();
+            setNoUseObjectNull();
+
+
         }
 
         @Override
@@ -623,5 +624,25 @@ public class LoopLayout extends RelativeLayout {
 
 
     LinearInterpolator linearInterpolator = new LinearInterpolator();
+
+    /**
+     * 设置不用的对象为空 等待垃圾回收
+     */
+    private void setNoUseObjectNull() {
+        narrowView.clearAnimation();
+        smallScaleX = null;
+        smallScaleY = null;
+        narrowView = null;
+        if (animatorSmall != null) {
+            animatorSmall.removeAllListeners();
+            animatorSmall.getChildAnimations().clear();
+            animatorSmall = null;
+        }
+        if (animatorSetsuofang != null) {
+            animatorSetsuofang.cancel();
+            animatorSetsuofang.removeAllListeners();
+            animatorSetsuofang = null;
+        }
+    }
 
 }
