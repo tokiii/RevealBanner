@@ -3,6 +3,16 @@
 
 ![banner_g--.gif](https://upload-images.jianshu.io/upload_images/2119978-c95cfa61b70be78a.gif?imageMogr2/auto-orient/strip)
 
+# 更新日志
+
+
+## [1.0.2] - 2019-12-23
+
+### bug修复
+
+- 修复长时间滑动卡顿性能问题.
+
+
 # 示例代码
 
 - 在 app的build.gradle 里面引用
