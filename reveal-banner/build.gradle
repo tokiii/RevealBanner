@@ -6,7 +6,7 @@ publish {
     repoName = 'myLib'
     groupId = 'com.tokiii'
     artifactId = 'reveal-banner'
-    publishVersion = '1.0.1'
+    publishVersion = '1.0.2'
     desc = 'reveal-banner-lib'
     website = 'https://github.com/tokiii'
 }
