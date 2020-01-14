@@ -58,7 +58,7 @@ implementation 'com.tokiii:reveal-banner:1.0.2'
         // 准备数据
         ArrayList<BannerInfo> bannerInfos = new ArrayList<>();
         List<Object> bgList = new ArrayList<>();
-        bannerInfos.add(new BannerInfo(R.mipmap.banner_1, "first"));
+        bannerInfos.add(new BannerInfo(R.mipmap.banner_1, "first"));// 注意： 使用网络图片只需把 R.mipmap.banner_1 替换为网络图片地址即可
         bannerInfos.add(new BannerInfo(R.mipmap.banner_2, "second"));
         bgList.add(R.mipmap.banner_bg1);
         bgList.add(R.mipmap.banner_bg2);
