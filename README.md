@@ -4,7 +4,12 @@
 ![banner_g--.gif](https://upload-images.jianshu.io/upload_images/2119978-c95cfa61b70be78a.gif?imageMogr2/auto-orient/strip)
 
 # 更新日志
+## [1.0.2] - 2020-07-14
+### 增加 Android x版本
 
+```
+implementation 'com.tokiii:reveal-banner-x:1.0.2'
+```
 
 ## [1.0.2] - 2019-12-23
 
