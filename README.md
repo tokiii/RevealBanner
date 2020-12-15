@@ -1,5 +1,5 @@
 # RevealBanner
-仿转转Banner  如有帮助，给个Star
+滑动特效banner  如有帮助，给个Star
 
 ![banner_g--.gif](https://upload-images.jianshu.io/upload_images/2119978-c95cfa61b70be78a.gif?imageMogr2/auto-orient/strip)
 
