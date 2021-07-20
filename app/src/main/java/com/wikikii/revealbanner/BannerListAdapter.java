@@ -39,7 +39,7 @@ public class BannerListAdapter extends BaseQuickAdapter<BannerListBean, BaseView
     private void setLoop(LoopLayout loopLayout, BannerBgContainer bannerBgContainer) {
         loopLayout.setLoop_ms(3000);//轮播的速度(毫秒)
         loopLayout.setLoop_duration(400);//滑动的速率(毫秒)
-        loopLayout.setScaleAnimation(true);// 设置是否需要动画
+        loopLayout.setScaleAnimation(false);// 设置是否需要动画
         loopLayout.setLoop_style(LoopStyle.Empty);//轮播的样式-默认empty
         loopLayout.setIndicatorLocation(IndicatorLocation.Center);//指示器位置-中Center
         loopLayout.initializeData(mContext);
