@@ -5,9 +5,9 @@
 
 # 更新日志
 ## [1.0.4] - 2021-07-20
-修复setScaleAnimation(false)导致闪退问题
-jcenter废弃，启用jitpack
-配置如下
+-修复setScaleAnimation(false)导致闪退问题
+-jcenter废弃，启用jitpack
+-配置如下
 ```
 allprojects {
 		repositories {
@@ -15,10 +15,10 @@ allprojects {
 			maven { url 'https://jitpack.io' }
 		}
 	}
+```	
+```
+implementation 'com.github.tokiii:RevealBanner:v1.0.4'
 
-dependencies {
-	        implementation 'com.github.tokiii:RevealBanner:v1.0.4'
-	}
 ```
 [![](https://jitpack.io/v/tokiii/RevealBanner.svg)](https://jitpack.io/#tokiii/RevealBanner)
 
@@ -34,7 +34,7 @@ dependencies {
 - 在 app的build.gradle 里面引用
 
 ```
-implementation 'com.tokiii:reveal-banner:1.0.4'
+implementation 'com.tokiii:reveal-banner:1.0.4'（废弃）
 ```
 
 - 布局文件
