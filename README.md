@@ -18,7 +18,6 @@ allprojects {
 ```	
 ```
 implementation 'com.github.tokiii:RevealBanner:v1.0.4'
-
 ```
 [![](https://jitpack.io/v/tokiii/RevealBanner.svg)](https://jitpack.io/#tokiii/RevealBanner)
 
