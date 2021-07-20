@@ -437,19 +437,25 @@ public class LoopLayout extends RelativeLayout {
             if (mViewPagerIndex == position) {
                 if (bannerBgContainer.getBannerBgViews().size() > position % bannerBgContainer.getBannerBgViews().size() + 1) {
                     bannerBgContainer.getBannerBgViews().get(position % bannerBgContainer.getBannerBgViews().size() + 1).bringToFront();
-                    bannerBgContainer.getBannerBgViews().get(position % bannerBgContainer.getBannerBgViews().size() + 1)
-                            .hideClipAnimation((positionOffset - reduceValue) * upValue > 1 ? 1 : (positionOffset - reduceValue) * upValue);
+                    if (isScaleAnimation){
+                        bannerBgContainer.getBannerBgViews().get(position % bannerBgContainer.getBannerBgViews().size() + 1)
+                                .hideClipAnimation((positionOffset - reduceValue) * upValue > 1 ? 1 : (positionOffset - reduceValue) * upValue);
+                    }
                 } else if (bannerBgContainer.getBannerBgViews().size() == position % bannerBgContainer.getBannerBgViews().size() + 1) {
                     bannerBgContainer.getBannerBgViews().get(0).bringToFront();
-                    bannerBgContainer.getBannerBgViews().get(0)
-                            .hideClipAnimation((positionOffset - reduceValue) * upValue > 1 ? 1 : (positionOffset - reduceValue) * upValue);
+                    if (isScaleAnimation){
+                        bannerBgContainer.getBannerBgViews().get(0)
+                                .hideClipAnimation((positionOffset - reduceValue) * upValue > 1 ? 1 : (positionOffset - reduceValue) * upValue);
+                    }
                 }
             } else {
                 if (position / bannerBgContainer.getBannerBgViews().size() >= 0) {
                     bannerBgContainer.getBannerBgViews().get(position % bannerBgContainer.getBannerBgViews().size()).bringToFront();
-                    bannerBgContainer.getBannerBgViews().get(position % bannerBgContainer.getBannerBgViews().size())
-                            .showClipAnimation(0, bannerBgContainer.getHeight() / 2,
-                                    (1 - (positionOffset + reduceValue)) * upValue > 1 ? 1 : (1 - (positionOffset + reduceValue)) * upValue);
+                    if (isScaleAnimation){
+                        bannerBgContainer.getBannerBgViews().get(position % bannerBgContainer.getBannerBgViews().size())
+                                .showClipAnimation(0, bannerBgContainer.getHeight() / 2,
+                                        (1 - (positionOffset + reduceValue)) * upValue > 1 ? 1 : (1 - (positionOffset + reduceValue)) * upValue);
+                    }
                 }
             }
 

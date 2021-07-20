@@ -14,7 +14,7 @@ public abstract class OnDefaultImageViewLoader implements OnLoadImageViewListene
     public View createImageView(Context context, boolean isScaleAnimation) {
         View view;
         if (!isScaleAnimation) {
-            view = LayoutInflater.from(context).inflate(R.layout.item_banner, null, false);
+            view = LayoutInflater.from(context).inflate(R.layout.item_normal_banner, null, false);
         } else {
             view = LayoutInflater.from(context).inflate(R.layout.item_animation_banner, null, false);
 

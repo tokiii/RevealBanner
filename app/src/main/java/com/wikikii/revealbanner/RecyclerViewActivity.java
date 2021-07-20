@@ -32,7 +32,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
     private void initView() {
         rvBannerList = findViewById(R.id.rv_banner_list);
         slBannerList = findViewById(R.id.sl_banner_list);
-        bannerListAdapter = new BannerListAdapter(R.layout.item_banner, allBeans);
+        bannerListAdapter = new BannerListAdapter(R.layout.item_normal_banner, allBeans);
         rvBannerList.setLayoutManager(new LinearLayoutManager(this));
         rvBannerList.setAdapter(bannerListAdapter);
 
