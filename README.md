@@ -5,9 +5,9 @@
 
 # 更新日志
 ## [1.0.4] - 2021-07-20
--修复setScaleAnimation(false)导致闪退问题
--jcenter废弃，启用jitpack
--配置如下
+- 修复setScaleAnimation(false)导致闪退问题
+- jcenter废弃，启用jitpack
+- 配置如下
 ```
 allprojects {
 		repositories {
