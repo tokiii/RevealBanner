@@ -3,8 +3,7 @@
 
 ![banner_g--.gif](https://upload-images.jianshu.io/upload_images/2119978-c95cfa61b70be78a.gif?imageMogr2/auto-orient/strip)
 
-# 更新日志
-## [1.0.4] - 2021-07-20
+## [V1.0.4] - 2021-07-20
 - 修复setScaleAnimation(false)导致闪退问题
 - jcenter废弃，启用jitpack
 - 配置如下
@@ -21,20 +20,8 @@ implementation 'com.github.tokiii:RevealBanner:v1.0.4'
 ```
 [![](https://jitpack.io/v/tokiii/RevealBanner.svg)](https://jitpack.io/#tokiii/RevealBanner)
 
-## [1.0.2] - 2019-12-23
-
-### bug修复
-
-- 修复长时间滑动卡顿性能问题.
-
-
 # 示例代码
 
-- 在 app的build.gradle 里面引用
-
-```
-implementation 'com.tokiii:reveal-banner:1.0.4'（废弃）
-```
 
 - 布局文件
 
